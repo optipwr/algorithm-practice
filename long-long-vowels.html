@@ -1,0 +1,26 @@
+<script type="text/javascript">
+
+var possibleMatches =['aa', 'ee', 'ii', 'oo', 'uu'];
+// var vowels = ["a", "e", "i", "o", "u"];
+	
+
+matchFound = false;
+
+
+function checkVowel(word){
+
+	for(var i = 0; i < possibleMatches.length; i++){
+		if (word.indexOf(possibleMatches[i]) !== -1){
+			console.log("Found a match");
+			var newSplitArray = word.split("");
+			var final = newSplitArray.splice(word.indexOf(possibleMatches[i]), 0, possibleMatches[i][0], possibleMatches[i]);
+			// newSplitArray.join('');
+			console.log(newSplitArray.join(''));
+
+		}
+	}
+}
+
+checkVowel('poop');
+
+</script>

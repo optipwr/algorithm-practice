@@ -1,0 +1,40 @@
+<!-- Given a paragraph of text as a string, print the paragraph in leetspeak. To translate a string to leetspeak, you need to replace make the following character replacements (treat all input characters as uppercase) -->
+
+
+<script type="text/javascript">
+	var letterSearch = ['A', 'E', 'G', 'I', 'O', 'S', 'T'];
+	var leetVersion = ['4', '3', '6', '1', '0', '5', '7'];
+
+
+function leetSpeak(words){
+	let complete = words;
+	for (let i = 0; i < letterSearch.length; i++){
+		if(complete.indexOf(letterSearch[i]) !== -1){
+			console.log("Found a match!");
+			let splitWord = complete.split("");
+			let combined = splitWord.splice(complete.indexOf(letterSearch[i]), 1, leetVersion[i]);
+			complete = splitWord.join("");
+			console.log(complete);
+			// console.log(combined);
+		}
+	}
+}
+
+function leetJT(string){  //JT Showed me a regex version solution.
+	var str = string.toUpperCase();
+	for(var i = 0; i < letterSearch.length; i++){
+		//variable reg is a new regular expression search that searches looped info globally (g) and replaces all found.
+		var reg = new RegExp(letterSearch[i],'g');
+		if(str.indexOf(letterSearch[i]) !== -1){
+			console.log("Found a match!");
+			var res = str.replace(reg, leetVersion[i]);
+			str = res;
+			// console.log(combined);
+		}
+	}
+	console.log(str);
+}
+
+leetSpeak('AEGIOST');
+leetJT("Check this Michael, it works");
+</script>
