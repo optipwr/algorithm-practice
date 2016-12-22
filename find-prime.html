@@ -33,8 +33,9 @@ function getPrime(n){
 	var prime = []; //We will stash all our prime numbers here.
 	prime.push(2); //Start with a 2 as it's the first prime number.
 	// console.log(prime);
-	var i = 3; //start checking at 3
+	var i = 2; //start checking at 2++
 	while(prime.length < n){ //Keep going until we have pushed n prime numbers on (=nth prime)
+		i++;
 		var isPrime = true; //Assume the number is prime until we find otherwise
 		for(var j = 0; j < prime.length; j++){ //Divide the current number by every known prime.
 			var iByJ = i % prime[j];
@@ -46,14 +47,24 @@ function getPrime(n){
 		if(isPrime){
 			prime.push(i);
 		}
-		i++;
+		// console.log(prime);
 	}
 	return i;
 }
 
-console.log(getPrime(10001));
+console.log(getPrime(6));
 
 
+// i = 3, prime = [2]
+// i = 4, prime = [2,3]
+// i = 5, prime = [2,3]
+// i = 6, prime = [2,3,5]
+// i = 7, prime = [2,3,5]
+// i = 8, prime = [2,3,5,7]
+// i = 9, prime = [2,3,5,7]
+// i = 10, prime = [2,3,5,7]
+// i = 11, prime = [2,3,5,7]
+// i = 12, prime = [2,3,5,7,11]
 
 
 
