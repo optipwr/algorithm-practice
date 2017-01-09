@@ -42,9 +42,10 @@ function caseConvert(str, conversionType){
 }
 
 var text = "hello everyone today";
-console.log(caseConvert(text, 'camelcase'));
+// console.log(caseConvert(text, 'camelcase'));
 
 
+// RegEx way of solving
 
 function camelCase(str) {  
      return str.replace(/\W+(.)/g, function(match, character)  
@@ -54,6 +55,35 @@ function camelCase(str) {
    }  
    
 camelCase("Here is my test");
+
+// Additional ways to solve
+
+function caseConverter(string, type){
+	var stringArray = string.split(' ');
+	var stringArrayToReturn = [];
+	if(type === 'camelCase'){
+		for(let i = 1; i < stringArray.length; i++){
+			var firstLetter = stringArray[i].charAt(0).toUpperCase();
+			var restOfWord = stringArray[i].slice(1);
+			var wordInCC = firstLetter + restOfWord;
+			stringArrayToReturn.push(wordInCC);
+		}
+		stringArrayToReturn.unshift(stringArray[0].toLowerCase());
+		var ccWord = stringArrayToReturn.join('');
+		return ccWord;
+	}
+	else if(type === 'snakeCase'){
+		var snakeCaseArray = [];
+		for(let i = 0; i < stringArray.length; i++){
+			var word = stringArray[i].toLowerCase();
+			snakeCaseArray.push(word);
+		}
+		snakeCaseWord = snakeCaseArray.join('_');
+		return snakeCaseWord;
+	}
+}
+
+console.log(caseConverter('How are you doing today', 'camelCase'));
 
 </script>
 
