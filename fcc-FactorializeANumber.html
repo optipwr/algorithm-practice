@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<script type="text/javascript">
+	
+// Return the factorial of the provided integer.
+// If the integer is represented with the letter n, a factorial is the product of all positive integers less than or equal to n
+// Factorials are often represented with the shorthand notation n!
+// For example: 5! = 1 * 2 * 3 * 4 * 5 = 120
+
+function factorialize(num) {
+	var sum = 1;
+	for (var i = 1; i <= num; i++){
+		sum = sum * i;
+	}
+	return sum;
+}
+
+console.log(factorialize(5));
+
+
+
+</script>
+
+</body>
+</html>
