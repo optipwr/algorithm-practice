@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<script type="text/javascript">
+	
+var convertPhone = (phoneStr) =>{
+	let digits = /\d/g;
+	var joinedUp = phoneStr.match(digits).join('');
+	let onlyTen = /\d{10}/;
+	var semiFinal = joinedUp.match(onlyTen).join('');
+	return semiFinal;
+
+	// return finalReg;
+}
+
+console.log(convertPhone('12-2--d34f-1562a2-7x8-92a0'));
+
+</script>
+
+</body>
+</html>
