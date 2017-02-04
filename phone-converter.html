@@ -9,15 +9,94 @@
 	
 var convertPhone = (phoneStr) =>{
 	let digits = /\d/g;
-	var joinedUp = phoneStr.match(digits).join('');
+	let joinedUp = phoneStr.match(digits).join('');
 	let onlyTen = /\d{10}/;
-	var semiFinal = joinedUp.match(onlyTen).join('');
-	return semiFinal;
-
-	// return finalReg;
+	let semiFinal = joinedUp.match(onlyTen).join('');
+	let splitAgain = semiFinal.split('');
+	splitAgain.splice(3, 0, "-");
+	splitAgain.splice(7, 0, "-");
+	let finalProd = splitAgain.join('');
+	return finalProd;
 }
 
-console.log(convertPhone('12-2--d34f-1562a2-7x8-92a0'));
+console.log(convertPhone('1992-1231232--d34f-1562234()()()(23423432a2-7x8-92a0'));
+
+
+
+// Another way to accomplish is to allow certain inputs then ignore all else
+
+function convertPhone(number) {
+ let input1 = /^\d{3}\-\d{3}\-\d{4}$/.test(number);         // 555-555-5555
+ let input2 = /^\d{3}\s\d{3}\s\d{4}$/.test(number);         // 555 555 5555
+ let input3 = /^\(\d{3}\)\d{3}\-\d{4}$/.test(number);       // (555)555-5555
+ let input4 = /^\d{3}\s\d{3}\-\d{4}$/.test(number);         // 555 555-5555
+ let input5 = /^\(\d{3}\)\s\d{3}\-\d{4}$/.test(number);     // (555) 555-5555
+ let input6 = /^\d\-\d{3}\-\d{3}\-\d{4}$/.test(number);     // 1-555-555-5555
+ let input7 = /^\(\d\)\d{3}\-\d{3}\-\d{4}$/.test(number);   // (1)555-555-5555
+ let input8 = /^\(\d\)\s\d{3}\-\d{3}\-\d{4}$/.test(number); // (1) 555-555-5555
+ let input9 = /^\d{10}$/.test(number);                      // 5555555555
+ let input10 = /^\d{11}$/.test(number);                     // 15555555555
+ 
+ var formattedNumber = '';
+ 
+ if (input1) {
+   return 'input1 ' + number;
+   
+ } else if (input2) {
+   formattedNumber = number.split(' ').join('-');
+   return 'input2 ' + formattedNumber;
+   
+ } else if (input3) {
+//     formattedNumber
+   return 'input3';
+//     return formattedNumber;
+   
+ } else if (input4) {
+   formattedNumber = number.split(' ').join('-');
+   return 'input4 ' + formattedNumber;
+   
+ } else if (input5) {
+   return 'input5';
+//     return formattedNumber;
+   
+ } else if (input6) {
+   return 'input6';
+//     return formattedNumber;
+   
+ } else if (input7) {
+   return 'input7';
+//     return formattedNumber;
+   
+ } else if (input8) {
+   return 'input8';
+//     return formattedNumber;
+   
+ } else if (input9) {
+   let splitNumber = number.split('');
+   splitNumber.splice(3, 0, '-');
+   splitNumber.splice(7, 0, '-');
+   formattedNumber = splitNumber.join('');
+   return 'input9 ' + formattedNumber;
+   
+ } else if (input10) {
+   return 'input10';
+   
+ } else {
+   return 'Invalid number';
+ }
+}
+
+// var number = '555-555-5555';
+// var number = '555 555 5555';
+// var number = '(555)555-5555';
+// var number = '555 555-5555';
+// var number = '(555) 555-5555';
+// var number = '1-555-555-5555';
+// var number = '(1)555-555-5555';
+// var number = '(1) 555-555-5555';
+var number = '5555555555';
+// var number = '15555555555';
+console.log(convertPhone(number));
 
 </script>
 
