@@ -25,6 +25,18 @@ console.log(convertPhone('1992-1231232--d34f-1562234()()()(23423432a2-7x8-92a0')
 
 // Another way to accomplish is to allow certain inputs then ignore all else
 
+function formatter(input) {
+ let formatted = input.match(/\d/g);
+ 
+ if (formatted.length > 10) {
+   formatted.splice(0, 1);
+ }
+ formatted.splice(3, 0, '-');
+ formatted.splice(7, 0, '-');
+
+ return formatted.join('');
+}
+
 function convertPhone(number) {
  let input1 = /^\d{3}\-\d{3}\-\d{4}$/.test(number);         // 555-555-5555
  let input2 = /^\d{3}\s\d{3}\s\d{4}$/.test(number);         // 555 555 5555
@@ -37,49 +49,36 @@ function convertPhone(number) {
  let input9 = /^\d{10}$/.test(number);                      // 5555555555
  let input10 = /^\d{11}$/.test(number);                     // 15555555555
  
- var formattedNumber = '';
  
  if (input1) {
-   return 'input1 ' + number;
+   return number;
    
  } else if (input2) {
-   formattedNumber = number.split(' ').join('-');
-   return 'input2 ' + formattedNumber;
+   return formatter(number);
    
  } else if (input3) {
-//     formattedNumber
-   return 'input3';
-//     return formattedNumber;
+   return formatter(number);
    
  } else if (input4) {
-   formattedNumber = number.split(' ').join('-');
-   return 'input4 ' + formattedNumber;
+   return formatter(number);
    
  } else if (input5) {
-   return 'input5';
-//     return formattedNumber;
+   return formatter(number);
    
  } else if (input6) {
-   return 'input6';
-//     return formattedNumber;
+   return formatter(number);
    
  } else if (input7) {
-   return 'input7';
-//     return formattedNumber;
+   return formatter(number);
    
  } else if (input8) {
-   return 'input8';
-//     return formattedNumber;
+   return formatter(number);
    
  } else if (input9) {
-   let splitNumber = number.split('');
-   splitNumber.splice(3, 0, '-');
-   splitNumber.splice(7, 0, '-');
-   formattedNumber = splitNumber.join('');
-   return 'input9 ' + formattedNumber;
+   return formatter(number);
    
  } else if (input10) {
-   return 'input10';
+   return formatter(number);
    
  } else {
    return 'Invalid number';
@@ -87,16 +86,16 @@ function convertPhone(number) {
 }
 
 // var number = '555-555-5555';
-// var number = '555 555 5555';
+var number = '555 555 5555';
 // var number = '(555)555-5555';
 // var number = '555 555-5555';
 // var number = '(555) 555-5555';
 // var number = '1-555-555-5555';
 // var number = '(1)555-555-5555';
 // var number = '(1) 555-555-5555';
-var number = '5555555555';
+// var number = '5555555555';
 // var number = '15555555555';
-console.log(convertPhone(number));
+convertPhone(number);
 
 </script>
 
