@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<script>
+
+// 2^15 = 32768 and the sum of its digits is 3 + 2 + 7 + 6 + 8 = 26.
+//
+// What is the sum of the digits of the number 2^1000?
+
+
+var theNumber = function digitAdd (base, exponent) {
+    var number = 1;
+    for (i=0; i < exponent; i++) {
+        var number = base * number;
+    }
+    return number
+}
+var poop = theNumber(2, 1000);
+
+// function sumDigits(number) {
+//   var str = number.toString();
+//   var sum = 0;
+//
+//   for (var i = 0; i < str.length; i++) {
+//     sum += parseInt(str.charAt(i), 10);
+//   }
+//
+//   return sum;
+// }
+
+
+function toFixed(x) {
+  if (Math.abs(x) < 1.0) {
+    var e = parseInt(x.toString().split('e-')[1]);
+    if (e) {
+        x *= Math.pow(10,e-1);
+        x = '0.' + (new Array(e)).join('0') + x.toString().substring(2);
+    }
+  } else {
+    var e = parseInt(x.toString().split('+')[1]);
+    if (e > 20) {
+        e -= 20;
+        x /= Math.pow(10,e);
+        x += (new Array(e+1)).join('0');
+    }
+  }
+  return x;
+}
+
+console.log(toFixed(poop));
+
+var sum = 0;
+var newArray = toFixed(poop).split("").map((currentValue)=>{
+    sum+=parseInt(currentValue);
+});
+
+console.log(sum);
+
+
+
+</script>
+
+</body>
+</html>
